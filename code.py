@@ -66,3 +66,11 @@ while True:
         magtag.set_text(out, index = 1)
         while magtag.peripherals.button_a_pressed: # wait till released
             pass
+
+    # timestamp
+    if magtag.peripherals.button_b_pressed:
+        out = weekdays[now.tm_wday] + " " + hh_mm(now, USE_AMPM_TIME)
+        magtag.set_text(out, index = 1)
+        while magtag.peripherals.button_a_pressed: # wait till released
+            pass
+
