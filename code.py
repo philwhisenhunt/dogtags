@@ -51,7 +51,7 @@ def hh_mm(time_struct, twelve_hour=True):
 while True:
     if not last_sync or (time.monotonic() - last_sync) > 3600:
         # at start or once an hour
-        magtag.network.get_local_time()
+        magtag.network.get_local_time()  # I think it fails on the hour, so start here
         last_sync = time.monotonic()
 
     # get current time
