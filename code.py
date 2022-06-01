@@ -51,7 +51,7 @@ def hh_mm(time_struct, twelve_hour=True):
 while True:
     if not last_sync or (time.monotonic() - last_sync) > 3600:
         # at start or once an hour
-        magtag.network.get_local_time()  # I think it fails on the hour, so start here
+        magtag.network.get_local_time()
         last_sync = time.monotonic()
 
     # get current time
@@ -69,9 +69,8 @@ while True:
         while magtag.peripherals.button_a_pressed:  # wait till released
             pass
 
-    # timestamp
     if magtag.peripherals.button_b_pressed:
-        out = weekdays[now.tm_wday] + " " + hh_mm(now, USE_AMPM_TIME)
+        out = "Pushed B"
         magtag.set_text(out, index=1)
-        while magtag.peripherals.button_b_pressed:  # wait till released
+        while magtag.peripherals.button_b_pressed:
             pass
